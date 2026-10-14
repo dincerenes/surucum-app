@@ -1,0 +1,1 @@
+ALTER TABLE `shifts` ADD `wear_per_km_kurus` integer;

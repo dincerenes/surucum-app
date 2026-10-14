@@ -1,0 +1,1 @@
+ALTER TABLE `vehicles` ADD `wear_per_km_kurus` integer DEFAULT 300 NOT NULL;

@@ -1,0 +1,132 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1787656025251,
+      "tag": "0000_spooky_blade",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1787676177139,
+      "tag": "0001_thin_iceman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1787706395786,
+      "tag": "0002_cynical_infant_terrible",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1787751000000,
+      "tag": "0003_fix_consumption_column_name",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1787791017953,
+      "tag": "0004_slim_rage",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1787871265993,
+      "tag": "0005_huge_morg",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1789517056442,
+      "tag": "0006_calm_colleen_wing",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1789791252463,
+      "tag": "0007_amazing_siren",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1789791257853,
+      "tag": "0008_outbox_owner_backfill",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1789830961138,
+      "tag": "0009_whole_integer_columns",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1789831413981,
+      "tag": "0010_common_anthem",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1789831427417,
+      "tag": "0011_shift_wear_backfill",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1789831850174,
+      "tag": "0012_volatile_riptide",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1789831850695,
+      "tag": "0013_fuel_log_shift_cursor",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1790118970158,
+      "tag": "0014_expense_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1790118970588,
+      "tag": "0015_expense_shift_cursor",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "6",
+      "when": 1790120638891,
+      "tag": "0016_profile_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1790162227975,
+      "tag": "0017_vehicle_wear_inputs",
+      "breakpoints": true
+    }
+  ]
+}

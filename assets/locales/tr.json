@@ -1,0 +1,8 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Sürücüm"
+  },
+  "android": {
+    "app_name": "Sürücüm"
+  }
+}

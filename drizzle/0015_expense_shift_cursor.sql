@@ -1,0 +1,12 @@
+-- Giderlerin çekme imleci baştan: `shift_id` yerelde yeni.
+--
+-- Başka bir cihazın buluta yazdığı vardiya bağı, bu cihaza eski sürümle
+-- inmiş satırlarda yok (eski sürüm tanımadığı sütunu atıyor). İmleç
+-- sıfırlanmazsa o satırlar bağsız kalır ve bir sonraki düzeltmede
+-- buluttaki bağı boşla ezerdi. Eski giderler DOLDURULMUYOR: hangi
+-- vardiyaya ait oldukları kesin bilinmiyor; listede "vardiya dışı"
+-- duruyorlar ve günün toplamına yine giriyorlar.
+--
+-- Bulut sütunu supabase/migrations, expense_shift ile geliyor ve BU
+-- SÜRÜMDEN ÖNCE uygulanmış olmalı.
+DELETE FROM `sync_state` WHERE `key` LIKE 'pull:%:expenses';

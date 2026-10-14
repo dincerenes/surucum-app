@@ -1,0 +1,54 @@
+# Her main push'unda ve PR'da: birim testleri, tip denetimi, lint ve
+# SQLite migration'larının şemayla tutarlılığı.
+#
+# Buluta hiç bağlanmaz, gizli anahtar istemez. EXPO_PUBLIC_* değişkenleri
+# gerekmiyor: testler ve tip denetimi Supabase istemcisini kurmuyor.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          # Testler .ts dosyalarını derleyicisiz, doğrudan Node ile koşuyor.
+          # Daha eski bir Node'da test dosyaları hiç yüklenmez.
+          node-version: 26
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run db:check
+
+      # Şema değişip `npm run db:generate` unutulursa cihazdaki veritabanı
+      # yeni sütunu hiç görmez ve senkron o sütunu sessizce düşürür.
+      # Üretim boş çıkmalı; çıkmıyorsa drizzle/ eksik commit'lenmiş.
+      - name: drizzle/ şemayla güncel mi
+        run: |
+          npx drizzle-kit generate < /dev/null
+          if [ -n "$(git status --porcelain -- drizzle)" ]; then
+            git status --short -- drizzle
+            echo "::error::Şema değişmiş ama drizzle/ güncellenmemiş: npm run db:generate"
+            exit 1
+          fi
+
+      # Yalnızca İNCELENMEMİŞ high/critical kırar. İncelenmiş uyarılar ve
+      # neden bekletildikleri: docs/bilinen-uyarilar.md
+      - run: node tools/audit-kontrol.mjs

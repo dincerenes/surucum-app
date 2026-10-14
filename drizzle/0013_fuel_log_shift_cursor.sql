@@ -1,0 +1,12 @@
+-- Dolumların çekme imleci baştan: `shift_id` yerelde yeni.
+--
+-- Başka bir cihazın buluta yazdığı vardiya bağı, bu cihaza eski sürümle
+-- inmiş satırlarda yok (eski sürüm tanımadığı sütunu atıyor). İmleç
+-- sıfırlanmazsa o satırlar bağsız kalır ve bir sonraki düzeltmede
+-- buluttaki bağı boşla ezerdi. Yeniden inen satır içerik aynıysa
+-- yazılmıyor. Eski dolumlar DOLDURULMUYOR: hangi vardiyaya ait oldukları
+-- bilinmiyor, vardiyasız dolum kuralı onları taşıyor.
+--
+-- Bulut sütunu supabase/migrations, fuel_log_shift ile geliyor ve BU
+-- SÜRÜMDEN ÖNCE uygulanmış olmalı.
+DELETE FROM `sync_state` WHERE `key` LIKE 'pull:%:fuel_logs';

@@ -1,0 +1,316 @@
+{
+  "_aciklama": "Buluttaki (Postgres) sütun adları. server_updated_at HARİÇ — o yalnızca sunucuda var, artımlı çekmenin imleci. Bu dosya schema-parity.test.ts tarafından yerel SQLite şemasıyla karşılaştırılıyor: iki taraf birebir aynı olmak zorunda, çünkü senkron satırları hiçbir eşleme yapmadan olduğu gibi gönderiyor.",
+  "_kaynak": "information_schema.columns — proje rbguvcvouuapiwxhecjn, 23 Eylül 2026",
+  "_bool_sutunlar": "SQLite bunları 0/1 tam sayı tutuyor, Postgres boolean bekliyor; senkron gönderirken çeviriyor.",
+  "bool": {
+    "earning_sources": [
+      "is_active"
+    ],
+    "expense_categories": [
+      "is_system",
+      "is_active"
+    ],
+    "fuel_logs": [
+      "is_full_tank"
+    ],
+    "goals": [
+      "is_active"
+    ],
+    "recurring_expenses": [
+      "is_active"
+    ],
+    "vehicle_fuel_types": [
+      "is_consumption_measured",
+      "is_primary"
+    ],
+    "vehicles": [
+      "is_active",
+      "has_accident_record"
+    ]
+  },
+  "_int_sutunlar": "Bulutta integer (int4, 32 bit) ya da bigint (int8) olan sütunlar; boolean olanlar yukarıda. SQLite ondalığı sessizce kabul ediyor, Postgres reddediyor ve gönderim tabloyu tek istekte yolladığı için tek bir ondalık değer o tablonun bütün yedeğini takıyor. schema-parity.test.ts yerel yazma yollarının bu sütunlara yalnızca tam sayı yazdığını sınıyor. Kaynak: supabase/migrations altındaki create/alter table tanımları (19 Eylül 2026); uzak şemayla information_schema.columns üzerinden doğrulanmalı.",
+  "int": {
+    "app_settings": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "day_cutoff_hour": "integer",
+      "onboarding_completed_at": "bigint"
+    },
+    "vehicles": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "model_year": "integer",
+      "initial_odometer_km": "integer",
+      "wear_per_km_kurus": "bigint",
+      "sort_order": "integer",
+      "maintenance_interval_km": "integer",
+      "maintenance_cost_kurus": "bigint",
+      "tire_interval_km": "integer",
+      "tire_cost_kurus": "bigint",
+      "market_value_kurus": "bigint"
+    },
+    "vehicle_fuel_types": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "avg_consumption_per_100km": "integer",
+      "last_unit_price_kurus": "bigint"
+    },
+    "earning_sources": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "default_commission_bps": "integer",
+      "sort_order": "integer"
+    },
+    "expense_categories": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "sort_order": "integer"
+    },
+    "shifts": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "started_at": "bigint",
+      "ended_at": "bigint",
+      "start_odometer_km": "integer",
+      "end_odometer_km": "integer",
+      "distance_km": "integer",
+      "worked_minutes": "integer",
+      "commission_kurus": "bigint",
+      "fuel_consumption_per_100km": "integer",
+      "fuel_price_kurus": "bigint",
+      "wear_per_km_kurus": "bigint"
+    },
+    "rides": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "occurred_at": "bigint",
+      "gross_amount_kurus": "bigint",
+      "commission_kurus": "bigint",
+      "net_amount_kurus": "bigint",
+      "commission_bps": "integer",
+      "tip_kurus": "bigint",
+      "distance_meters": "integer",
+      "duration_seconds": "integer"
+    },
+    "expenses": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "amount_kurus": "bigint",
+      "occurred_at": "bigint"
+    },
+    "recurring_expenses": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "amount_kurus": "bigint"
+    },
+    "fuel_logs": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "occurred_at": "bigint",
+      "volume_per1000": "integer",
+      "unit_price_kurus": "bigint",
+      "total_amount_kurus": "bigint",
+      "odometer_km": "integer"
+    },
+    "goals": {
+      "created_at": "bigint",
+      "updated_at": "bigint",
+      "deleted_at": "bigint",
+      "target_net_kurus": "bigint"
+    }
+  },
+  "tables": {
+    "app_settings": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "day_cutoff_hour",
+      "default_vehicle_id",
+      "region_code",
+      "default_earning_source_id",
+      "onboarding_completed_at",
+      "display_name",
+      "city",
+      "avatar"
+    ],
+    "earning_sources": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "name",
+      "default_commission_bps",
+      "color_hex",
+      "is_active",
+      "sort_order"
+    ],
+    "expense_categories": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "name",
+      "kind",
+      "icon",
+      "is_system",
+      "is_active",
+      "sort_order"
+    ],
+    "expenses": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "category_id",
+      "vehicle_id",
+      "shift_id",
+      "amount_kurus",
+      "occurred_at",
+      "business_date",
+      "receipt_path",
+      "notes"
+    ],
+    "fuel_logs": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "vehicle_id",
+      "fuel_type",
+      "occurred_at",
+      "business_date",
+      "volume_per1000",
+      "unit_price_kurus",
+      "total_amount_kurus",
+      "odometer_km",
+      "is_full_tank",
+      "station_name",
+      "receipt_path",
+      "notes",
+      "shift_id"
+    ],
+    "goals": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "period",
+      "target_net_kurus",
+      "start_date",
+      "end_date",
+      "is_active"
+    ],
+    "recurring_expenses": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "category_id",
+      "vehicle_id",
+      "name",
+      "amount_kurus",
+      "period",
+      "start_date",
+      "end_date",
+      "is_active",
+      "notes"
+    ],
+    "rides": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "shift_id",
+      "earning_source_id",
+      "vehicle_id",
+      "occurred_at",
+      "business_date",
+      "gross_amount_kurus",
+      "commission_kurus",
+      "net_amount_kurus",
+      "commission_bps",
+      "tip_kurus",
+      "payment_method",
+      "distance_meters",
+      "duration_seconds",
+      "notes"
+    ],
+    "shifts": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "vehicle_id",
+      "started_at",
+      "ended_at",
+      "start_odometer_km",
+      "end_odometer_km",
+      "business_date",
+      "notes",
+      "distance_km",
+      "worked_minutes",
+      "commission_kurus",
+      "fuel_consumption_per_100km",
+      "fuel_price_kurus",
+      "wear_per_km_kurus"
+    ],
+    "vehicle_fuel_types": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "vehicle_id",
+      "fuel_type",
+      "avg_consumption_per_100km",
+      "is_consumption_measured",
+      "last_unit_price_kurus",
+      "is_primary"
+    ],
+    "vehicles": [
+      "id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "deleted_at",
+      "label",
+      "plate",
+      "make",
+      "model",
+      "model_year",
+      "ownership",
+      "initial_odometer_km",
+      "is_active",
+      "sort_order",
+      "notes",
+      "wear_per_km_kurus",
+      "transmission",
+      "maintenance_interval_km",
+      "maintenance_cost_kurus",
+      "tire_interval_km",
+      "tire_cost_kurus",
+      "market_value_kurus",
+      "has_accident_record"
+    ]
+  }
+}
