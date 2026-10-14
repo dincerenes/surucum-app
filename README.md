@@ -2,7 +2,9 @@
 
 Kendi arabasıyla, bir uygulama üzerinden çalışan sürücüler için kazanç,
 gider ve **aracın gerçek maliyetini** takip eden iOS + Android uygulaması.
-App Store'da yayında; Türkçe arayüz.
+[App Store'da yayında](https://apps.apple.com/tr/app/id6818763300); Türkçe arayüz.
+
+[![App Store'dan indir](https://img.shields.io/badge/App_Store-İndir-0D96F6?style=for-the-badge&logo=appstore&logoColor=white)](https://apps.apple.com/tr/app/id6818763300)
 
 ![React Native](https://img.shields.io/badge/React_Native-0.86-61DAFB?logo=react&logoColor=white)
 ![Expo](https://img.shields.io/badge/Expo-57-000020?logo=expo&logoColor=white)
